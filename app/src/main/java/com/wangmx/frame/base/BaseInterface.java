@@ -8,4 +8,10 @@ package com.wangmx.frame.base;
  * </pre>
  */
 public interface BaseInterface {
+    interface BaseView{
+
+    }
+    interface BasePresenter{
+
+    }
 }
