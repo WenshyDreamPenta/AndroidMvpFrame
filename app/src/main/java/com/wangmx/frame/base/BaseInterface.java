@@ -1,5 +1,7 @@
 package com.wangmx.frame.base;
 
+import android.view.View;
+
 /**
  * <pre>
  *     author : wangmingxing
@@ -9,9 +11,13 @@ package com.wangmx.frame.base;
  */
 public interface BaseInterface {
     interface BaseView{
-
     }
     interface BasePresenter{
+
+    }
+    interface BaseEvent{
+        void doClick(View view);
+        void onWidgetClick(View view);
 
     }
 }
