@@ -1,5 +1,6 @@
 package com.wangmx.frame.base;
 
+import android.os.Bundle;
 import android.view.View;
 
 /**
@@ -10,14 +11,21 @@ import android.view.View;
  * </pre>
  */
 public interface BaseInterface {
-    interface BaseView{
-    }
-    interface BasePresenter{
+    interface BaseView extends View.OnClickListener {
+        void initData(final Bundle bundle);
 
+        int getLayoutId();
+
+        void onWidgetClick(final View view);
+
+        void init();
+
+        void initEvents();
+
+        void initViews();
     }
-    interface BaseEvent{
-        void doClick(View view);
-        void onWidgetClick(View view);
+
+    interface BasePresenter {
 
     }
 }

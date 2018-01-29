@@ -7,8 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
+import com.wangmx.framelibrary.utils.CommonUtil;
 
 /**
  * <pre>
@@ -17,14 +16,12 @@ import butterknife.Unbinder;
  *     desc   : Fragment 基类
  * </pre>
  */
-public abstract class BaseFragment extends Fragment implements  BaseInterface.BaseEvent {
-    private Unbinder mUnbinder;
+public abstract class BaseFragment extends Fragment implements  BaseInterface.BaseView{
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(getLayoutId(), null);
-        mUnbinder = ButterKnife.bind(this, view);
         init();
         initViews();
         initEvents();
@@ -36,27 +33,17 @@ public abstract class BaseFragment extends Fragment implements  BaseInterface.Ba
     public void onSaveInstanceState(Bundle outState) {
     }
 
-    protected abstract int getLayoutId();
-
-    protected abstract void initViews();
-
-    protected abstract void initEvents();
-
-    protected abstract void init();
 
     @Override
-    public void doClick(View view) {
-
-    }
-
-    @Override
-    public void onWidgetClick(View view) {
-
+    public void onClick(View v) {
+        if(CommonUtil.isFastClick()){
+            return;
+        }
+        onWidgetClick(v);
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        mUnbinder.unbind();
     }
 }
