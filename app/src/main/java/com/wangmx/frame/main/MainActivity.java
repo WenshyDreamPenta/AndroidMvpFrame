@@ -1,12 +1,10 @@
 package com.wangmx.frame.main;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import com.wangmx.frame.R;
 import com.wangmx.frame.base.BaseBarActivity;
-import com.wangmx.framelibrary.utils.BarUtils;
 
 public class MainActivity extends BaseBarActivity {
 
@@ -17,8 +15,7 @@ public class MainActivity extends BaseBarActivity {
 
     @Override
     public void init() {
-        int staheight = BarUtils.getActionBarHeight(this);
-        Log.d("MainActivity", "init: " + staheight) ;
+        getToolBar().setTitle("main activity");
     }
 
     @Override
