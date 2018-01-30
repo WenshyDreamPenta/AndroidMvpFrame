@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.wangmx.framelibrary.utils.ActivityManageUtil;
 import com.wangmx.framelibrary.utils.CommonUtil;
+import com.wangmx.framelibrary.utils.animator.FrameAnimator;
 
 /**
  * <pre>
@@ -31,6 +32,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseInte
         initViews();
         initEvents();
         ActivityManageUtil.getManager().addActivity(this);//加入acvivity管理栈
+
     }
 
     protected void setBaseView(@LayoutRes int layoutId) {
