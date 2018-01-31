@@ -7,7 +7,7 @@ package com.wangmx.frame.main;
  *     desc   :
  * </pre>
  */
-public interface MainContact {
+public interface MainContract {
     interface View{
         void initAnimator();
     }
