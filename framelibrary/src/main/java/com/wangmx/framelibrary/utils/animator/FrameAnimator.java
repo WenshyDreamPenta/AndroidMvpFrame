@@ -101,8 +101,9 @@ public class FrameAnimator implements LifecycleObserver{
         //播放动画，同步锁防止多线程读帧时，数据安全问题
         public synchronized void start() {
             mShouldRun = true;
-            if (mIsRunning)
+            if (mIsRunning){
                 return;
+            }
 
             //读帧线程
             Runnable runnable = new Runnable() {
