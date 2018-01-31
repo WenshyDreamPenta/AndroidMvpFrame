@@ -8,7 +8,7 @@ import com.wangmx.frame.R;
 import com.wangmx.frame.base.BaseBarActivity;
 import com.wangmx.framelibrary.utils.animator.FrameAnimator;
 
-public class MainActivity extends BaseBarActivity {
+public class MainActivity extends BaseBarActivity implements MainContact.View{
     private ImageView imageView;
     @Override
     public int getLayoutId() {
@@ -35,6 +35,11 @@ public class MainActivity extends BaseBarActivity {
     @Override
     public void initViews() {
         imageView = findViewById(R.id.iv_refresh);
+        initAnimator();
+    }
+
+    @Override
+    public void initAnimator() {
         getLifecycle().addObserver(FrameAnimator.getInstance().setParameters(this, getLifecycle(),R.array.refresh_anim, 24));
         FrameAnimator.getInstance().createFramesAnim(imageView).setIsRecycle(true).start();
         imageView.setOnClickListener(new View.OnClickListener() {

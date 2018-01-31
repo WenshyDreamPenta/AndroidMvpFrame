@@ -1,18 +1,17 @@
-package com.wangmx.frame.main;
+package com.wangmx.frame.profile;
 
 /**
  * <pre>
  *     author : wangmingxing
- *     time   : 2018/1/28
+ *     time   : 2018/1/31
  *     desc   :
  * </pre>
  */
-public interface MainContact {
+public interface ProfileContract {
     interface View{
-        void initAnimator();
+
     }
     interface Presenter{
 
     }
-
 }

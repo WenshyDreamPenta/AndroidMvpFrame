@@ -87,7 +87,7 @@ public class RetrofitManager {
             return this;
         }
 
-        public Builder addService(int serviceId, Class clazz) {
+        public Builder addApiService(int serviceId, Class clazz) {
             serviceClasses.put(serviceId, clazz);
             return this;
         }

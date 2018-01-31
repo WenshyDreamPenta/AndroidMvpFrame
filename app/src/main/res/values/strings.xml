@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">AndroidMvpFrame</string>
-    <string name="title_activity_main_activity">MainActivity</string>
+    <string name="title_activity_main_activity">AndroidMvpFrame</string>
 </resources>

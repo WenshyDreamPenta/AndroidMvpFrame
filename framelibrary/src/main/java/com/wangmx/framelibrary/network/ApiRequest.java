@@ -17,9 +17,16 @@ public class ApiRequest {
 
     private static ApiRequest mInstance;
     private static RetrofitManager retrofitManager = new RetrofitManager.Builder().setBaseUrl("")
-            .addService(0, UserApi.class)
+            .addApiService(0, UserApi.class)
             .addInterceptor(new HttpInterceptor())
             .build();
+
+    ApiRequest getInstance() {
+        if (mInstance == null) {
+            mInstance = new ApiRequest();
+        }
+        return mInstance;
+    }
 
     public <T> int requestApi(Flowable<T> observable, ApiSubscriber<T> subscriber) {
         return retrofitManager.requestApi(observable, subscriber);
@@ -32,10 +39,4 @@ public class ApiRequest {
         return null;
     }
 
-    ApiRequest getInstance() {
-        if (mInstance == null) {
-            mInstance = new ApiRequest();
-        }
-        return mInstance;
-    }
 }
