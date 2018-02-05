@@ -1,4 +1,4 @@
-package com.wangmx.frame.main;
+package com.wangmx.frame.home;
 
 import com.wangmx.framelibrary.base.BasePresenter;
 
@@ -9,6 +9,6 @@ import com.wangmx.framelibrary.base.BasePresenter;
  *     desc   :
  * </pre>
  */
-public class MainPresenter extends BasePresenter<MainContract.View> {
+public class HomePresenter extends BasePresenter<HomeContract.View> {
 
 }

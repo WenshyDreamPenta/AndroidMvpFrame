@@ -1,4 +1,4 @@
-package com.wangmx.frame.main;
+package com.wangmx.frame.home;
 
 /**
  * <pre>
@@ -7,7 +7,7 @@ package com.wangmx.frame.main;
  *     desc   :
  * </pre>
  */
-public interface MainContract {
+public interface HomeContract {
     interface View{
         void initAnimator();
     }

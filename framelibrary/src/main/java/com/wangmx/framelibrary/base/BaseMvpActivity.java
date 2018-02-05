@@ -7,7 +7,7 @@ import android.support.annotation.Nullable;
  * <pre>
  *     author : wangmingxing
  *     time   : 2018/2/5
- *     desc   :
+ *     desc   : mvp Activity 基类
  * </pre>
  */
 public abstract class BaseMvpActivity<V, P extends BasePresenter<V>> extends BaseBarActivity {

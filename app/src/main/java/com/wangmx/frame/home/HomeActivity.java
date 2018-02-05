@@ -1,4 +1,4 @@
-package com.wangmx.frame.main;
+package com.wangmx.frame.home;
 
 import android.os.Bundle;
 import android.view.View;
@@ -8,11 +8,11 @@ import com.wangmx.frame.R;
 import com.wangmx.framelibrary.base.BaseMvpActivity;
 import com.wangmx.framelibrary.utils.animator.FrameAnimator;
 
-public class MainActivity extends BaseMvpActivity<MainContract.View, MainPresenter> implements MainContract.View{
+public class HomeActivity extends BaseMvpActivity<HomeContract.View, HomePresenter> implements HomeContract.View{
     private ImageView imageView;
     @Override
     public int getLayoutId() {
-        return R.layout.main_activity;
+        return R.layout.home_activity;
     }
 
     @Override
@@ -53,8 +53,8 @@ public class MainActivity extends BaseMvpActivity<MainContract.View, MainPresent
     }
 
     @Override
-    public MainPresenter initPresenter() {
-        return new MainPresenter();
+    public HomePresenter initPresenter() {
+        return new HomePresenter();
     }
 
     @Override
