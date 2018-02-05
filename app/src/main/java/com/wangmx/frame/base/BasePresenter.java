@@ -7,5 +7,14 @@ package com.wangmx.frame.base;
  *     desc   : Presenter基类
  * </pre>
  */
-public abstract class BasePresenter {
+public abstract class BasePresenter<T> implements BaseInterface.BasePresenter{
+    private T view;
+
+    public void attach(T view){
+        this.view = view;
+    }
+
+    public void detach(){
+        this.view = null;
+    }
 }

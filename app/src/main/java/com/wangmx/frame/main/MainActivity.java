@@ -5,10 +5,10 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.wangmx.frame.R;
-import com.wangmx.frame.base.BaseBarActivity;
+import com.wangmx.frame.base.BaseMvpActivity;
 import com.wangmx.framelibrary.utils.animator.FrameAnimator;
 
-public class MainActivity extends BaseBarActivity implements MainContract.View{
+public class MainActivity extends BaseMvpActivity<MainContract.View, MainPresenter> implements MainContract.View{
     private ImageView imageView;
     @Override
     public int getLayoutId() {
@@ -18,7 +18,6 @@ public class MainActivity extends BaseBarActivity implements MainContract.View{
     @Override
     public void init() {
         getToolBar().setTitle("main activity");
-
     }
 
     @Override
@@ -28,7 +27,6 @@ public class MainActivity extends BaseBarActivity implements MainContract.View{
 
     @Override
     public void initEvents() {
-
 
     }
 
@@ -54,4 +52,8 @@ public class MainActivity extends BaseBarActivity implements MainContract.View{
     public void onWidgetClick(View view) {
     }
 
+    @Override
+    public MainPresenter initPresenter() {
+        return new MainPresenter();
+    }
 }

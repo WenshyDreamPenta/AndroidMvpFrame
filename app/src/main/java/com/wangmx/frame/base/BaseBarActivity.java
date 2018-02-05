@@ -18,7 +18,7 @@ import com.wangmx.framelibrary.utils.BarUtils;
  *     desc   : 有bar的activity基类
  * </pre>
  */
-public abstract class BaseBarActivity extends BaseActivity {
+public abstract class BaseBarActivity extends BaseEventActivity {
     protected CoordinatorLayout rootLayout;
     protected Toolbar mToolbar;
     protected AppBarLayout appBarLayout;

@@ -25,6 +25,7 @@ public interface BaseInterface {
         void initViews();
     }
 
+
     interface BasePresenter {
 
     }

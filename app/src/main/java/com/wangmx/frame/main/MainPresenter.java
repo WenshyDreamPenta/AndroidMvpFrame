@@ -1,5 +1,7 @@
 package com.wangmx.frame.main;
 
+import com.wangmx.frame.base.BasePresenter;
+
 /**
  * <pre>
  *     author : wangmingxing
@@ -7,5 +9,6 @@ package com.wangmx.frame.main;
  *     desc   :
  * </pre>
  */
-public class MainPresenter {
+public class MainPresenter extends BasePresenter<MainContract.View> {
+
 }
