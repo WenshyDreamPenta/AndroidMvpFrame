@@ -1,4 +1,4 @@
-package com.wangmx.framelibrary.base;
+package com.wangmx.framelibrary.base.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.wangmx.framelibrary.base.BaseInterface;
+import com.wangmx.framelibrary.base.activity.BaseActivity;
 import com.wangmx.framelibrary.utils.CommonUtil;
 
 /**
@@ -17,7 +19,7 @@ import com.wangmx.framelibrary.utils.CommonUtil;
  *     desc   : Fragment 基类
  * </pre>
  */
-public abstract class BaseFragment extends Fragment implements  BaseInterface.BaseView{
+public abstract class BaseFragment extends Fragment implements BaseInterface.BaseView {
     protected View contentView;
     protected BaseActivity mActivity;
     private static final String STATE_SAVE_IS_HIDDEN = "STATE_SAVE_IS_HIDDEN";

@@ -1,4 +1,4 @@
-package com.wangmx.framelibrary.base;
+package com.wangmx.framelibrary.base.activity;
 
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;

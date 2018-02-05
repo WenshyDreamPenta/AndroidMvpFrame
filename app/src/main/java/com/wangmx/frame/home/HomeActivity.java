@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.wangmx.frame.R;
-import com.wangmx.framelibrary.base.BaseMvpActivity;
+import com.wangmx.framelibrary.base.activity.BaseMvpActivity;
 import com.wangmx.framelibrary.utils.animator.FrameAnimator;
 
 public class HomeActivity extends BaseMvpActivity<HomeContract.View, HomePresenter> implements HomeContract.View{

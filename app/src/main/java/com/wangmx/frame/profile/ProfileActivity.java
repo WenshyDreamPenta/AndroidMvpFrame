@@ -3,7 +3,7 @@ package com.wangmx.frame.profile;
 import android.os.Bundle;
 import android.view.View;
 
-import com.wangmx.framelibrary.base.BaseBarActivity;
+import com.wangmx.framelibrary.base.activity.BaseBarActivity;
 
 /**
  * <pre>

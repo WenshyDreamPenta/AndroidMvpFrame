@@ -1,4 +1,4 @@
-package com.wangmx.framelibrary.base;
+package com.wangmx.framelibrary.base.activity;
 
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import com.wangmx.framelibrary.base.BaseInterface;
 import com.wangmx.framelibrary.utils.ActivityManageUtil;
 import com.wangmx.framelibrary.utils.CommonUtil;
 

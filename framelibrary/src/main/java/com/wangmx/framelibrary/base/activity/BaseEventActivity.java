@@ -1,4 +1,4 @@
-package com.wangmx.framelibrary.base;
+package com.wangmx.framelibrary.base.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

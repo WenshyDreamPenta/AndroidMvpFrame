@@ -1,4 +1,4 @@
-package com.wangmx.framelibrary.base;
+package com.wangmx.framelibrary.base.application;
 
 import android.support.multidex.MultiDexApplication;
 
