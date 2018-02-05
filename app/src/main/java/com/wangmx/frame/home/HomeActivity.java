@@ -18,6 +18,7 @@ public class HomeActivity extends BaseMvpActivity<HomeContract.View, HomePresent
     @Override
     public void init() {
        // getToolBar().setTitle("main activity");
+        mPresenter.initDatas();
     }
 
     @Override
@@ -46,6 +47,11 @@ public class HomeActivity extends BaseMvpActivity<HomeContract.View, HomePresent
                 finish();
             }
         });
+    }
+
+    @Override
+    public void updateViews(String data) {
+
     }
 
     @Override

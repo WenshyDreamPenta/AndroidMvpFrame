@@ -9,6 +9,11 @@ import com.wangmx.framelibrary.base.BasePresenter;
  *     desc   :
  * </pre>
  */
-public class HomePresenter extends BasePresenter<HomeContract.View> {
+public class HomePresenter extends BasePresenter<HomeContract.View> implements HomeContract.Presenter {
 
+    @Override
+    public void initDatas() {
+        String s = "";
+        mView.updateViews(s);
+    }
 }

@@ -10,9 +10,10 @@ package com.wangmx.frame.home;
 public interface HomeContract {
     interface View{
         void initAnimator();
+        void updateViews(String data);
     }
     interface Presenter{
-
+        void initDatas();
     }
 
 }

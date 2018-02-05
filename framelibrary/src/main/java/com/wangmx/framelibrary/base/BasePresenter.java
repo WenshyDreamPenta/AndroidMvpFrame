@@ -8,13 +8,13 @@ package com.wangmx.framelibrary.base;
  * </pre>
  */
 public abstract class BasePresenter<T> implements BaseInterface.BasePresenter{
-    private T view;
+    protected T mView;
 
     public void attach(T view){
-        this.view = view;
+        this.mView = view;
     }
 
     public void detach(){
-        this.view = null;
+        this.mView = null;
     }
 }
