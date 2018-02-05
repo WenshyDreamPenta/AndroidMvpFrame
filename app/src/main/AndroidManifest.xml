@@ -3,7 +3,7 @@
     package="com.wangmx.frame">
 
     <application
-        android:name=".base.BaseAplication"
+        android:name="com.wangmx.framelibrary.base.BaseAplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"

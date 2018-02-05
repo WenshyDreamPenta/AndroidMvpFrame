@@ -3,7 +3,7 @@ package com.wangmx.frame.profile;
 import android.os.Bundle;
 import android.view.View;
 
-import com.wangmx.frame.base.BaseBarActivity;
+import com.wangmx.framelibrary.base.BaseBarActivity;
 
 /**
  * <pre>
@@ -41,5 +41,15 @@ public class ProfileActivity extends BaseBarActivity {
     @Override
     public void initViews() {
 
+    }
+
+    @Override
+    protected boolean isEventActivity() {
+        return false;
+    }
+
+    @Override
+    protected boolean isShouldHasBar() {
+        return false;
     }
 }

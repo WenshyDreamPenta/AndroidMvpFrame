@@ -1,4 +1,4 @@
-package com.wangmx.frame.base;
+package com.wangmx.framelibrary.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -17,11 +17,10 @@ import org.greenrobot.eventbus.ThreadMode;
  * </pre>
  */
 public abstract class BaseEventActivity extends BaseActivity {
-    protected boolean isEvent = true;//事件开关
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(isEvent){
+        if(isEventActivity()){
             EventBus.getDefault().register(this);
         }
     }
@@ -40,8 +39,10 @@ public abstract class BaseEventActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(isEvent){
+        if(isEventActivity()){
             EventBus.getDefault().unregister(this);
         }
     }
+
+    protected abstract boolean isEventActivity();
 }

@@ -1,6 +1,6 @@
 package com.wangmx.frame.main;
 
-import com.wangmx.frame.base.BasePresenter;
+import com.wangmx.framelibrary.base.BasePresenter;
 
 /**
  * <pre>
