@@ -1,6 +1,7 @@
 package com.wangmx.frame.feature.home;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,6 +13,7 @@ import com.wangmx.framelibrary.utils.animator.FrameAnimator;
 public class HomeActivity extends BaseMvpActivity<HomeContract.View, HomePresenter> implements HomeContract.View {
     private ImageView imageView;
     private TextView tvInfo;
+    private Handler mHandler = new Handler();
 
     @Override
     public int getLayoutId() {
@@ -32,7 +34,7 @@ public class HomeActivity extends BaseMvpActivity<HomeContract.View, HomePresent
 
     @Override
     public void initEvents() {
-
+        imageView.setOnClickListener(this);
     }
 
     @Override
@@ -45,14 +47,6 @@ public class HomeActivity extends BaseMvpActivity<HomeContract.View, HomePresent
     public void initAnimator() {
         getLifecycle().addObserver(FrameAnimator.getInstance().setParameters(this, getLifecycle(), R.array.refresh_anim, 24));
         FrameAnimator.getInstance().createFramesAnim(imageView).setIsRecycle(true).start();
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                finish();
-            }
-        });
-        showToast("animator start!");
     }
 
     @Override
@@ -62,6 +56,18 @@ public class HomeActivity extends BaseMvpActivity<HomeContract.View, HomePresent
 
     @Override
     public void onWidgetClick(View view) {
+        switch (view.getId()) {
+            case R.id.iv_refresh:
+                showToast("Loading...");
+                showLoading();
+                mHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        disLoading();
+                    }
+                }, 2 * 1000);
+                break;
+        }
     }
 
     @Override

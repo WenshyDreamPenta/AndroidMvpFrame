@@ -2,6 +2,7 @@ package com.wangmx.framelibrary.widget.loading;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.support.annotation.LayoutRes;
 
 import com.wangmx.framelibrary.R;
 
@@ -14,13 +15,13 @@ import com.wangmx.framelibrary.R;
  */
 public class LoadingDialog extends Dialog {
 
-    public LoadingDialog(Context context) {
+    public LoadingDialog(Context context, @LayoutRes int layoutId) {
         super(context, R.style.NormalDialogStyle);
-        init();
+        init(layoutId);
     }
 
-    private void init() {
-        setContentView(R.layout.loading_dialog);
+    private void init(@LayoutRes int layoutId) {
+        setContentView(layoutId);
         this.setCancelable(false);
     }
 
@@ -30,5 +31,7 @@ public class LoadingDialog extends Dialog {
             super.dismiss();
         }
     }
+
+
 
 }

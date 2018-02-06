@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import com.r0adkll.slidr.Slidr;
+import com.wangmx.framelibrary.R;
 import com.wangmx.framelibrary.base.BaseInterface;
 import com.wangmx.framelibrary.utils.ActivityManageUtil;
 import com.wangmx.framelibrary.utils.CommonUtil;
@@ -27,6 +29,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseInte
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Slidr.attach(this);
         Bundle bundle = getIntent().getExtras();
         initData(bundle);
         setBaseView(getLayoutId());
@@ -34,7 +37,6 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseInte
         initEvents();
         init();
         ActivityManageUtil.getManager().addActivity(this);
-
     }
 
     protected void setBaseView(@LayoutRes int layoutId) {
@@ -52,7 +54,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseInte
     @Override
     public void showLoading() {
         if(mLoadingDialog == null){
-            mLoadingDialog = new LoadingDialog(this);
+            mLoadingDialog = new LoadingDialog(this, R.layout.loading_dialog);
         }
         mLoadingDialog.show();
     }
