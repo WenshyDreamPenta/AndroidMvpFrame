@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.wangmx.frame">
+    package="com.blink.frame">
 
     <application
-        android:name="com.wangmx.framelibrary.base.application.BaseAplication"
+        android:name="com.blink.framelibrary.base.application.BaseAplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".feature.home.HomeActivity"
+            android:name="com.blink.frame.feature.home.HomeActivity"
             android:label="@string/title_activity_main_activity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
