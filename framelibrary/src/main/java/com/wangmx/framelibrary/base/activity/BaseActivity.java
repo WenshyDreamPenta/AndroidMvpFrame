@@ -10,6 +10,7 @@ import android.view.View;
 import com.wangmx.framelibrary.base.BaseInterface;
 import com.wangmx.framelibrary.utils.ActivityManageUtil;
 import com.wangmx.framelibrary.utils.CommonUtil;
+import com.wangmx.framelibrary.widget.loading.LoadingDialog;
 
 /**
  * <pre>
@@ -21,6 +22,7 @@ import com.wangmx.framelibrary.utils.CommonUtil;
 public abstract class BaseActivity extends AppCompatActivity implements BaseInterface.BaseView, BaseInterface.BaseUtilView {
 
     protected View contentView;
+    protected LoadingDialog mLoadingDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,12 +51,17 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseInte
 
     @Override
     public void showLoading() {
-
+        if(mLoadingDialog == null){
+            mLoadingDialog = new LoadingDialog(this);
+        }
+        mLoadingDialog.show();
     }
 
     @Override
     public void disLoading() {
-
+        if(mLoadingDialog != null && mLoadingDialog.isShowing()){
+            mLoadingDialog.dismiss();
+        }
     }
 
     @Override

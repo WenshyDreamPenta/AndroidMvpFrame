@@ -19,7 +19,7 @@ import com.wangmx.framelibrary.utils.CommonUtil;
  *     desc   : Fragment 基类
  * </pre>
  */
-public abstract class BaseFragment extends Fragment implements BaseInterface.BaseView {
+public abstract class BaseFragment extends Fragment implements BaseInterface.BaseView, BaseInterface.BaseUtilView{
     protected View contentView;
     protected BaseActivity mActivity;
     private static final String STATE_SAVE_IS_HIDDEN = "STATE_SAVE_IS_HIDDEN";
@@ -85,5 +85,20 @@ public abstract class BaseFragment extends Fragment implements BaseInterface.Bas
             return;
         }
         onWidgetClick(v);
+    }
+
+    @Override
+    public void showLoading() {
+        mActivity.showLoading();
+    }
+
+    @Override
+    public void disLoading() {
+        mActivity.disLoading();
+    }
+
+    @Override
+    public void showToast(String msg) {
+        mActivity.showToast(msg);
     }
 }
