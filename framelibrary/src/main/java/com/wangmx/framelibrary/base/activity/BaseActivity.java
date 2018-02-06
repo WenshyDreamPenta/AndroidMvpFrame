@@ -18,7 +18,7 @@ import com.wangmx.framelibrary.utils.CommonUtil;
  *     desc   : Activity基类
  * </pre>
  */
-public abstract class BaseActivity extends AppCompatActivity implements BaseInterface.BaseView {
+public abstract class BaseActivity extends AppCompatActivity implements BaseInterface.BaseView, BaseInterface.BaseUtilView {
 
     protected View contentView;
 
@@ -28,9 +28,9 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseInte
         Bundle bundle = getIntent().getExtras();
         initData(bundle);
         setBaseView(getLayoutId());
-        init();
         initViews();
         initEvents();
+        init();
         ActivityManageUtil.getManager().addActivity(this);
 
     }
@@ -45,6 +45,21 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseInte
             return;
         }
         onWidgetClick(v);
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void disLoading() {
+
+    }
+
+    @Override
+    public void showToast(String msg) {
+        CommonUtil.showCustomToast(this, msg, 0);
     }
 
     @Override

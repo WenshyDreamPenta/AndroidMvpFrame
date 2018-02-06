@@ -8,4 +8,11 @@
         android:layout_height="50dp"
         android:layout_marginTop="108dp"/>
 
+    <TextView
+        android:id="@+id/tv_info"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/iv_refresh"
+        android:layout_marginTop="50dp"/>
+
 </RelativeLayout>

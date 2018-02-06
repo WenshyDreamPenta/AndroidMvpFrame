@@ -3,6 +3,7 @@
     <color name="colorPrimary">#efca37</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-
-
+    <color name="white">#FFFFFF</color>
+    <!-- Toast -->
+    <color name="color_cc221e27">#cc221e27</color>
 </resources>

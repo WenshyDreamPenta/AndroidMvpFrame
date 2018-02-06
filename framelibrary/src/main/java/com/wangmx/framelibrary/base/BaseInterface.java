@@ -25,6 +25,11 @@ public interface BaseInterface {
         void initViews();
     }
 
+    interface BaseUtilView{
+        void showLoading();
+        void disLoading();
+        void showToast(String msg);
+    }
 
     interface BasePresenter {
 

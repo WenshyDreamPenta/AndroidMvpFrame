@@ -13,7 +13,7 @@ public class HomePresenter extends BasePresenter<HomeContract.View> implements H
 
     @Override
     public void initDatas() {
-        String s = "";
+        String s = "hello";
         mView.updateViews(s);
     }
 }
