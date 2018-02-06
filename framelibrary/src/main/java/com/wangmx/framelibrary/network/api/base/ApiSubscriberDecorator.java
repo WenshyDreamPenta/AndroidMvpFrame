@@ -1,7 +1,11 @@
 package com.wangmx.framelibrary.network.api.base;
 
 /**
- * Created by supertramp on 17/12/26.
+ * <pre>
+ *     author : wangmingxing
+ *     time   : 2018/2/5
+ *     desc   : api数据 订阅
+ * </pre>
  */
 
 public class ApiSubscriberDecorator<T> extends ApiSubscriber<T> {
