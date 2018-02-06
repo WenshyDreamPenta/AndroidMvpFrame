@@ -1,4 +1,4 @@
-package com.wangmx.frame.profile;
+package com.wangmx.frame.feature.profile;
 
 import android.os.Bundle;
 import android.view.View;

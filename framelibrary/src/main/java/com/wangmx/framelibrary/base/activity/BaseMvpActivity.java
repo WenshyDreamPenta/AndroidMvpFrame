@@ -28,10 +28,5 @@ public abstract class BaseMvpActivity<V, P extends BasePresenter<V>> extends Bas
         super.onDestroy();
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
     public abstract P initPresenter();
 }

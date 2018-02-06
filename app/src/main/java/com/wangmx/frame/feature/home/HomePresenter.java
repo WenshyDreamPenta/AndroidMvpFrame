@@ -1,4 +1,4 @@
-package com.wangmx.frame.home;
+package com.wangmx.frame.feature.home;
 
 import com.wangmx.framelibrary.base.BasePresenter;
 

@@ -44,6 +44,9 @@ public abstract class BaseFragment extends Fragment implements BaseInterface.Bas
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         setRetainInstance(true);
         contentView = inflater.inflate(getLayoutId(), null);
+        initViews();
+        initEvents();
+        init();
 
         return contentView;
     }
@@ -60,9 +63,6 @@ public abstract class BaseFragment extends Fragment implements BaseInterface.Bas
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mActivity = (BaseActivity) getActivity();
-        init();
-        initViews();
-        initEvents();
     }
 
     @Override
@@ -71,6 +71,13 @@ public abstract class BaseFragment extends Fragment implements BaseInterface.Bas
         outState.putBoolean(STATE_SAVE_IS_HIDDEN, isHidden());
     }
 
+    @Override
+    public void onDestroyView() {
+        if (contentView != null) {
+            ((ViewGroup) contentView.getParent()).removeView(contentView);
+        }
+        super.onDestroyView();
+    }
 
     @Override
     public void onClick(View v) {
