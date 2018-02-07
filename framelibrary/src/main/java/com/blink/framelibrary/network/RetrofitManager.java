@@ -104,9 +104,9 @@ public class RetrofitManager {
                     .readTimeout(HttpCommon.OKHTTP_CLIENT_READ_TIMEOUT, TimeUnit.SECONDS)
                     .retryOnConnectionFailure(false);
             if (interceptors != null && interceptors.size() > 0) {
-                Iterator<Interceptor> iterator = interceptors.iterator();
-                while (iterator.hasNext()) {
-                    okHttpClientBuilder.addInterceptor(iterator.next());
+                for (Interceptor interceptor: interceptors) {
+                    okHttpClientBuilder.addInterceptor(interceptor);
+
                 }
             }
 

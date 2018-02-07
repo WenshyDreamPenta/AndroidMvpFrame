@@ -8,4 +8,6 @@ package com.blink.framelibrary.network.constant;
  * </pre>
  */
 public class HttpData {
+    //qcloud
+    public static final String PLUGIN_QCLOUD = "plugin/qcloud";
 }

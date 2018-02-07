@@ -21,7 +21,7 @@ public class ApiRequest {
             .addInterceptor(new HttpInterceptor())
             .build();
 
-    ApiRequest getInstance() {
+    public ApiRequest getInstance() {
         if (mInstance == null) {
             mInstance = new ApiRequest();
         }
