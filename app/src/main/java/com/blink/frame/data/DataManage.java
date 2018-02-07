@@ -8,4 +8,5 @@ package com.blink.frame.data;
  * </pre>
  */
 public class DataManage {
+
 }

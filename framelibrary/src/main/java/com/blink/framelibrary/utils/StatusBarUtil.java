@@ -28,18 +28,14 @@ import java.lang.reflect.Method;
  *     desc   : bar util
  * </pre>
  */
-public final class BarUtils {
-
-    ///////////////////////////////////////////////////////////////////////////
-    // status bar
-    ///////////////////////////////////////////////////////////////////////////
+public final class StatusBarUtil {
 
     private static final int DEFAULT_ALPHA = 112;
     private static final String TAG_COLOR = "TAG_COLOR";
     private static final String TAG_ALPHA = "TAG_ALPHA";
     private static final int TAG_OFFSET = -123;
 
-    private BarUtils() {
+    private StatusBarUtil() {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
 
@@ -211,7 +207,7 @@ public final class BarUtils {
         transparentStatusBar((Activity) fakeStatusBar.getContext());
         ViewGroup.LayoutParams layoutParams = fakeStatusBar.getLayoutParams();
         layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
-        layoutParams.height = BarUtils.getStatusBarHeight(fakeStatusBar.getContext());
+        layoutParams.height = StatusBarUtil.getStatusBarHeight(fakeStatusBar.getContext());
         fakeStatusBar.setBackgroundColor(getStatusBarColor(color, alpha));
     }
 
@@ -237,7 +233,7 @@ public final class BarUtils {
         transparentStatusBar((Activity) fakeStatusBar.getContext());
         ViewGroup.LayoutParams layoutParams = fakeStatusBar.getLayoutParams();
         layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
-        layoutParams.height = BarUtils.getStatusBarHeight(fakeStatusBar.getContext());
+        layoutParams.height = StatusBarUtil.getStatusBarHeight(fakeStatusBar.getContext());
         fakeStatusBar.setBackgroundColor(Color.argb(alpha, 0, 0, 0));
     }
 

@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.widget.FrameLayout;
 
 import com.blink.framelibrary.R;
-import com.blink.framelibrary.utils.BarUtils;
+import com.blink.framelibrary.utils.StatusBarUtil;
 
 /**
  * <pre>
@@ -37,12 +37,12 @@ public abstract class BaseBarActivity extends BaseEventActivity {
             setSupportActionBar(mToolbar);
             getToolBar().setDisplayHomeAsUpEnabled(true);
 
-            BarUtils.setStatusBarColor(this, ContextCompat.getColor(this, R.color.colorPrimary), 0);
-            BarUtils.addMarginTopEqualStatusBarHeight(rootLayout);
+            StatusBarUtil.setStatusBarColor(this, ContextCompat.getColor(this, R.color.colorPrimary), 0);
+            StatusBarUtil.addMarginTopEqualStatusBarHeight(rootLayout);
         }
         else {
             super.setBaseView(layoutId);
-            BarUtils.setStatusBarColor(this, ContextCompat.getColor(this, R.color.colorPrimary), 0);
+            StatusBarUtil.setStatusBarColor(this, ContextCompat.getColor(this, R.color.colorPrimary), 0);
         }
 
     }
