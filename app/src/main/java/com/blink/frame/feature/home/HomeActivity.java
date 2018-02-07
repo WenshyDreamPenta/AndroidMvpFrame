@@ -45,8 +45,8 @@ public class HomeActivity extends BaseMvpActivity<HomeContract.View, HomePresent
 
     @Override
     public void initAnimator() {
-        getLifecycle().addObserver(FrameAnimator.getInstance().setParameters(this, getLifecycle(), R.array.refresh_anim, 24));
-        FrameAnimator.getInstance().createFramesAnim(imageView).setIsRecycle(true).start();
+        FrameAnimator.getInstance().setParameters(this, R.array.refresh_anim, 24)
+                .createFramesAnim(imageView).setIsRecycle(true).start();
     }
 
     @Override

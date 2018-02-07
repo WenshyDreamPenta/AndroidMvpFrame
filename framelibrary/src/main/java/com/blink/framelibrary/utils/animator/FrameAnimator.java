@@ -41,7 +41,7 @@ public class FrameAnimator implements LifecycleObserver{
         return mInstance;
     }
 
-    public FrameAnimator setParameters(Context context, Lifecycle lifecycle, int resId, int fps){
+    public FrameAnimator setParameters(Context context, int resId, int fps){
         mInstance.mContext = context;
         mInstance.FPS = fps;
         mInstance.mProgressAnimFrames = mInstance.getData(resId);
@@ -50,9 +50,7 @@ public class FrameAnimator implements LifecycleObserver{
     }
 
     public FramesSequenceAnimation createFramesAnim(ImageView imageView) {
-        FramesSequenceAnimation framesSequenceAnimation = new FramesSequenceAnimation(imageView, mProgressAnimFrames, FPS);
-
-        return framesSequenceAnimation;
+        return new FramesSequenceAnimation(imageView, mProgressAnimFrames, FPS);
     }
 
 
@@ -214,9 +212,7 @@ public class FrameAnimator implements LifecycleObserver{
         void AnimationStopped();
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     public void releaseAnimator() {
-        Log.d("FrameAnimator", "releaseAnimator: ");
         mInstance.mContext = null;
         mInstance = null;
     }
