@@ -68,8 +68,7 @@ public class HomeActivity extends BaseMvpActivity<HomeContract.View, HomePresent
                 initAnimator();
                 break;
             case R.id.tv_api_test:
-                HttpApiRequest.request(HttpApiRequest.getApi(TestApi.class).getTestApi()
-                        , new ApiSubscriber<TestModule>() {
+                HttpApiRequest.request(HttpApiRequest.getApi(TestApi.class).getTestApi(), new ApiSubscriber<TestModule>() {
                     @Override
                     public void onNext(TestModule testModule) {
                         Log.d("api", "onNext: " + testModule.getMsg());

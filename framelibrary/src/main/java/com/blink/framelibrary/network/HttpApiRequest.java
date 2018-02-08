@@ -12,7 +12,7 @@ import io.reactivex.annotations.NonNull;
  * <pre>
  *     author : wangmingxing
  *     time   : 2018/1/30
- *     desc   :
+ *     desc   : Http Api Request
  * </pre>
  */
 public class HttpApiRequest {
