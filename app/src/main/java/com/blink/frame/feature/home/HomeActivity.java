@@ -10,7 +10,6 @@ import android.widget.TextView;
 import com.blink.frame.R;
 import com.blink.framelibrary.base.activity.BaseMvpActivity;
 import com.blink.framelibrary.network.ApiRequest;
-import com.blink.framelibrary.network.manager.RetrofitManager;
 import com.blink.framelibrary.network.api.testapi.TestApi;
 import com.blink.framelibrary.network.api.testapi.module.TestModule;
 import com.blink.framelibrary.network.subscriber.ApiSubscriber;
@@ -69,7 +68,7 @@ public class HomeActivity extends BaseMvpActivity<HomeContract.View, HomePresent
                 initAnimator();
                 break;
             case R.id.tv_api_test:
-                ApiRequest.requestApi(((TestApi) ApiRequest.getService(RetrofitManager.API_TEST)).getTestApi(), new ApiSubscriber<TestModule>() {
+                ApiRequest.getInstance().requestApi(((TestApi)ApiRequest.getApi(TestApi.class)).getTestApi(), new ApiSubscriber<TestModule>() {
                     @Override
                     public void onNext(TestModule testModule) {
                         Log.d("api", "onNext: " + testModule.getMsg());

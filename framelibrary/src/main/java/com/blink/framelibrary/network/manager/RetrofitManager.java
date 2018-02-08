@@ -1,13 +1,10 @@
 package com.blink.framelibrary.network.manager;
 
-import com.blink.framelibrary.network.api.testapi.TestApi;
 import com.blink.framelibrary.network.subscriber.ApiSubscriber;
 import com.blink.framelibrary.network.subscriber.ApiSubscriberDecorator;
-import com.blink.framelibrary.network.api.user.UserApi;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -32,46 +29,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitManager {
 
     private Retrofit mRetrofit;
-    private Map<Integer, Object> services = new HashMap<>();
 
     private AtomicInteger requestCounter = new AtomicInteger(0);
-    public static final int API_USER = 0;
-    public static final int API_TEST = 1;
-
-    public RetrofitManager(Retrofit retrofit, List<Interceptor> interceptors,
-            Map<Integer, Class> serviceClasses) {
-
+    public RetrofitManager(Retrofit retrofit, List<Interceptor> interceptors) {
         mRetrofit = retrofit;
-        Iterator<Integer> iterator = serviceClasses.keySet().iterator();
-        while (iterator.hasNext()) {
-            Integer serviceId = iterator.next();
-            services.put(serviceId, retrofit.create(serviceClasses.get(serviceId)));
-        }
-
     }
-
-    public Object getService(Integer serviceId) {
-        if (services.isEmpty() || services.get(serviceId) == null) {
-            return addService(serviceId);
-        }
-        return services.get(serviceId);
+    public Retrofit getRetrofit(){
+        return mRetrofit;
     }
-
-    public Object addService(int id) {
-        switch (id) {
-            case API_USER:
-                UserApi userApi = mRetrofit.create(UserApi.class);
-                services.put(API_USER, userApi);
-                return userApi;
-            case API_TEST:
-                TestApi testApi = mRetrofit.create(TestApi.class);
-                services.put(API_USER, testApi);
-                return testApi;
-
-        }
-        return null;
-    }
-
     //请求
     public <T> int requestApi(Flowable<T> flowable, ApiSubscriber<T> subscriber) {
         int requstId = requestCounter.addAndGet(1);
@@ -86,15 +51,9 @@ public class RetrofitManager {
 
         private String baseUrl;
         private List<Interceptor> interceptors = new ArrayList<>();
-        private Map<Integer, Class> serviceClasses = new HashMap<>();
 
         public Builder setBaseUrl(String baseUrl) {
             this.baseUrl = baseUrl;
-            return this;
-        }
-
-        public Builder addApiService(int serviceId, Class clazz) {
-            serviceClasses.put(serviceId, clazz);
             return this;
         }
 
@@ -122,7 +81,7 @@ public class RetrofitManager {
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
 
-            return new RetrofitManager(retrofit, interceptors, serviceClasses);
+            return new RetrofitManager(retrofit, interceptors);
 
         }
 
