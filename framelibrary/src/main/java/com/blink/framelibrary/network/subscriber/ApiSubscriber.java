@@ -1,4 +1,4 @@
-package com.blink.framelibrary.network.api.base;
+package com.blink.framelibrary.network.subscriber;
 
 import io.reactivex.subscribers.ResourceSubscriber;
 

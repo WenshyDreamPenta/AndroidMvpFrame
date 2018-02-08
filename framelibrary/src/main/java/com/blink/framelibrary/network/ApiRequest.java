@@ -1,6 +1,8 @@
 package com.blink.framelibrary.network;
 
-import com.blink.framelibrary.network.api.base.ApiSubscriber;
+import com.blink.framelibrary.config.Config;
+import com.blink.framelibrary.network.manager.RetrofitManager;
+import com.blink.framelibrary.network.subscriber.ApiSubscriber;
 import com.blink.framelibrary.network.api.user.UserApi;
 import com.blink.framelibrary.network.interceptor.HttpInterceptor;
 
@@ -15,24 +17,17 @@ import io.reactivex.Flowable;
  */
 public class ApiRequest {
 
-    private static ApiRequest mInstance;
-    private static RetrofitManager retrofitManager = new RetrofitManager.Builder().setBaseUrl("")
+    private static RetrofitManager retrofitManager = new RetrofitManager.Builder()
+            .setBaseUrl(Config.BASE_URL)
             .addApiService(0, UserApi.class)
             .addInterceptor(new HttpInterceptor())
             .build();
 
-    public ApiRequest getInstance() {
-        if (mInstance == null) {
-            mInstance = new ApiRequest();
-        }
-        return mInstance;
-    }
-
-    public <T> int requestApi(Flowable<T> observable, ApiSubscriber<T> subscriber) {
+    public static <T> int requestApi(Flowable<T> observable, ApiSubscriber<T> subscriber) {
         return retrofitManager.requestApi(observable, subscriber);
     }
 
-    public <T> T getService(int id) {
+    public static <T> T getService(int id) {
         if (retrofitManager != null) {
             return (T) retrofitManager.getService(id);
         }

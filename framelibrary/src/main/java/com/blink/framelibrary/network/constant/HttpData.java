@@ -10,4 +10,5 @@ package com.blink.framelibrary.network.constant;
 public class HttpData {
     //qcloud
     public static final String PLUGIN_QCLOUD = "plugin/qcloud";
+    public static final String TEST_API = "AppFiftyToneGraph/videoLink";
 }

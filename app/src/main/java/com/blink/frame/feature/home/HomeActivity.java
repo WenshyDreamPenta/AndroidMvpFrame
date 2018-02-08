@@ -1,8 +1,7 @@
 package com.blink.frame.feature.home;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -10,17 +9,19 @@ import android.widget.TextView;
 
 import com.blink.frame.R;
 import com.blink.framelibrary.base.activity.BaseMvpActivity;
-import com.blink.framelibrary.utils.CommonUtil;
+import com.blink.framelibrary.network.ApiRequest;
+import com.blink.framelibrary.network.manager.RetrofitManager;
+import com.blink.framelibrary.network.api.testapi.TestApi;
+import com.blink.framelibrary.network.api.testapi.module.TestModule;
+import com.blink.framelibrary.network.subscriber.ApiSubscriber;
 import com.blink.framelibrary.utils.animator.FrameAnimator;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
-
-public class HomeActivity extends BaseMvpActivity<HomeContract.View, HomePresenter> implements HomeContract.View {
+public class HomeActivity extends BaseMvpActivity<HomeContract.View, HomePresenter> implements
+        HomeContract.View {
     private ImageView imageView;
-    private TextView tvInfo;
     private RelativeLayout rlRoot;
-    private Handler mHandler = new Handler();
+    private TextView tvApi;
+    private TextView tvAnim;
 
     @Override
     public int getLayoutId() {
@@ -31,22 +32,6 @@ public class HomeActivity extends BaseMvpActivity<HomeContract.View, HomePresent
     public void init() {
         // getToolBar().setTitle("main activity");
         mPresenter.initDatas();
-        initAnimator();
-        try{
-            Class<?> textClass = Class.forName("android.widget.TextView");
-            Constructor constructor = textClass.getConstructor(Context.class);
-            Method settext = textClass.getMethod("setText", CharSequence.class);
-            Object object = constructor.newInstance(this);
-            rlRoot.addView((TextView)object);
-            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) ((TextView)object).getLayoutParams();
-            layoutParams.topMargin = CommonUtil.dp2px(this, 100);
-            ((TextView)object).setLayoutParams(layoutParams);
-            settext.invoke(object, "invoke hello");
-
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
     }
 
     @Override
@@ -57,38 +42,44 @@ public class HomeActivity extends BaseMvpActivity<HomeContract.View, HomePresent
     @Override
     public void initEvents() {
         imageView.setOnClickListener(this);
+        tvApi.setOnClickListener(this);
+        tvAnim.setOnClickListener(this);
     }
 
     @Override
     public void initViews() {
         imageView = findViewById(R.id.iv_refresh);
-        tvInfo = findViewById(R.id.tv_info);
+        tvAnim = findViewById(R.id.tv_anim_test);
+        tvApi = findViewById(R.id.tv_api_test);
         rlRoot = findViewById(R.id.rl_root);
     }
 
     @Override
     public void initAnimator() {
-        FrameAnimator.getInstance().setParameters(this, R.array.refresh_anim, 24)
-                .createFramesAnim(imageView).setIsRecycle(true).start();
+        FrameAnimator.getInstance()
+                .setParameters(this, R.array.refresh_anim, 24)
+                .createFramesAnim(imageView)
+                .setIsRecycle(true)
+                .start();
     }
 
     @Override
     public void updateViews(String data) {
-        tvInfo.setText(data);
     }
 
     @Override
     public void onWidgetClick(View view) {
         switch (view.getId()) {
-            case R.id.iv_refresh:
-                showToast("Loading...");
-                showLoading();
-                mHandler.postDelayed(new Runnable() {
+            case R.id.tv_anim_test:
+                initAnimator();
+                break;
+            case R.id.tv_api_test:
+                ApiRequest.requestApi(((TestApi) ApiRequest.getService(RetrofitManager.API_TEST)).getTestApi(), new ApiSubscriber<TestModule>() {
                     @Override
-                    public void run() {
-                        disLoading();
+                    public void onNext(TestModule testModule) {
+                        Log.d("api", "onNext: " + testModule.getMsg());
                     }
-                }, 2 * 1000);
+                });
                 break;
         }
     }

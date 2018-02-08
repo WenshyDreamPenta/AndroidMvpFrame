@@ -1,7 +1,8 @@
-package com.blink.framelibrary.network;
+package com.blink.framelibrary.network.manager;
 
-import com.blink.framelibrary.network.api.base.ApiSubscriber;
-import com.blink.framelibrary.network.api.base.ApiSubscriberDecorator;
+import com.blink.framelibrary.network.api.testapi.TestApi;
+import com.blink.framelibrary.network.subscriber.ApiSubscriber;
+import com.blink.framelibrary.network.subscriber.ApiSubscriberDecorator;
 import com.blink.framelibrary.network.api.user.UserApi;
 
 import java.util.ArrayList;
@@ -35,6 +36,7 @@ public class RetrofitManager {
 
     private AtomicInteger requestCounter = new AtomicInteger(0);
     public static final int API_USER = 0;
+    public static final int API_TEST = 1;
 
     public RetrofitManager(Retrofit retrofit, List<Interceptor> interceptors,
             Map<Integer, Class> serviceClasses) {
@@ -61,6 +63,10 @@ public class RetrofitManager {
                 UserApi userApi = mRetrofit.create(UserApi.class);
                 services.put(API_USER, userApi);
                 return userApi;
+            case API_TEST:
+                TestApi testApi = mRetrofit.create(TestApi.class);
+                services.put(API_USER, testApi);
+                return testApi;
 
         }
         return null;
