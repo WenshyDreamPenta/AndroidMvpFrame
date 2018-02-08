@@ -23,8 +23,8 @@ public class ApiRequest {
             .addInterceptor(new HttpInterceptor())
             .build();
 
-    public static <T> int requestApi(Flowable<T> observable, ApiSubscriber<T> subscriber) {
-        return retrofitManager.requestApi(observable, subscriber);
+    public static <T> void requestApi(Flowable<T> observable, ApiSubscriber<T> subscriber) {
+        retrofitManager.requestApi(observable, subscriber);
     }
 
     public static <T> T getService(int id) {

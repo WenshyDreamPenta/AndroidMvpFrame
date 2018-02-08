@@ -16,8 +16,7 @@ import com.blink.framelibrary.network.api.testapi.module.TestModule;
 import com.blink.framelibrary.network.subscriber.ApiSubscriber;
 import com.blink.framelibrary.utils.animator.FrameAnimator;
 
-public class HomeActivity extends BaseMvpActivity<HomeContract.View, HomePresenter> implements
-        HomeContract.View {
+public class HomeActivity extends BaseMvpActivity<HomeContract.View, HomePresenter> implements HomeContract.View {
     private ImageView imageView;
     private RelativeLayout rlRoot;
     private TextView tvApi;
@@ -56,11 +55,7 @@ public class HomeActivity extends BaseMvpActivity<HomeContract.View, HomePresent
 
     @Override
     public void initAnimator() {
-        FrameAnimator.getInstance()
-                .setParameters(this, R.array.refresh_anim, 24)
-                .createFramesAnim(imageView)
-                .setIsRecycle(true)
-                .start();
+        FrameAnimator.getInstance().setParameters(this, R.array.refresh_anim, 24).createFramesAnim(imageView).setIsRecycle(true).start();
     }
 
     @Override
