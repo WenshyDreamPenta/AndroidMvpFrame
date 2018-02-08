@@ -6,7 +6,7 @@
     android:padding="@dimen/common_toast_padding"
     android:orientation="horizontal" >
 
-    <com.blink.framelibrary.widget.text.HandyTextView
+    <TextView
         android:id="@+id/toast_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

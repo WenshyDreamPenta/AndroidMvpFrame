@@ -7,10 +7,10 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.blink.framelibrary.R;
-import com.blink.framelibrary.widget.text.HandyTextView;
 
 /**
  * <pre>
@@ -53,7 +53,7 @@ public class CommonUtil {
             return;
         }
         View toastRoot = LayoutInflater.from(context).inflate(R.layout.common_toast, null);
-        ((HandyTextView) toastRoot.findViewById(R.id.toast_text)).setText(msg);
+        ((TextView) toastRoot.findViewById(R.id.toast_text)).setText(msg);
         Toast toast = new Toast(context);
         toast.setGravity(Gravity.CENTER, 0, 0);
         if(type == 0){

@@ -1,18 +1,25 @@
 package com.blink.frame.feature.home;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.blink.frame.R;
 import com.blink.framelibrary.base.activity.BaseMvpActivity;
+import com.blink.framelibrary.utils.CommonUtil;
 import com.blink.framelibrary.utils.animator.FrameAnimator;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
 
 public class HomeActivity extends BaseMvpActivity<HomeContract.View, HomePresenter> implements HomeContract.View {
     private ImageView imageView;
     private TextView tvInfo;
+    private RelativeLayout rlRoot;
     private Handler mHandler = new Handler();
 
     @Override
@@ -25,6 +32,21 @@ public class HomeActivity extends BaseMvpActivity<HomeContract.View, HomePresent
         // getToolBar().setTitle("main activity");
         mPresenter.initDatas();
         initAnimator();
+        try{
+            Class<?> textClass = Class.forName("android.widget.TextView");
+            Constructor constructor = textClass.getConstructor(Context.class);
+            Method settext = textClass.getMethod("setText", CharSequence.class);
+            Object object = constructor.newInstance(this);
+            rlRoot.addView((TextView)object);
+            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) ((TextView)object).getLayoutParams();
+            layoutParams.topMargin = CommonUtil.dp2px(this, 100);
+            ((TextView)object).setLayoutParams(layoutParams);
+            settext.invoke(object, "invoke hello");
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -41,6 +63,7 @@ public class HomeActivity extends BaseMvpActivity<HomeContract.View, HomePresent
     public void initViews() {
         imageView = findViewById(R.id.iv_refresh);
         tvInfo = findViewById(R.id.tv_info);
+        rlRoot = findViewById(R.id.rl_root);
     }
 
     @Override
