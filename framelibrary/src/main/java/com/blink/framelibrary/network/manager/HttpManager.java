@@ -4,9 +4,7 @@ import com.blink.framelibrary.network.subscriber.ApiSubscriber;
 import com.blink.framelibrary.network.subscriber.ApiSubscriberDecorator;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -26,19 +24,22 @@ import retrofit2.converter.gson.GsonConverterFactory;
  *     desc   : 网络Api管理类
  * </pre>
  */
-public class RetrofitManager {
+public class HttpManager {
 
     private Retrofit mRetrofit;
 
     private AtomicInteger requestCounter = new AtomicInteger(0);
-    public RetrofitManager(Retrofit retrofit, List<Interceptor> interceptors) {
+    public HttpManager(Retrofit retrofit, List<Interceptor> interceptors) {
         mRetrofit = retrofit;
     }
+
+    //获取Retrofit
     public Retrofit getRetrofit(){
         return mRetrofit;
     }
+
     //请求
-    public <T> int requestApi(Flowable<T> flowable, ApiSubscriber<T> subscriber) {
+    public <T> int request(Flowable<T> flowable, ApiSubscriber<T> subscriber) {
         int requstId = requestCounter.addAndGet(1);
         ApiSubscriberDecorator subscriberDecorator = new ApiSubscriberDecorator(requstId, subscriber);
         flowable.subscribeOn(Schedulers.io())
@@ -62,7 +63,7 @@ public class RetrofitManager {
             return this;
         }
 
-        public RetrofitManager build() {
+        public HttpManager build() {
 
             OkHttpClient.Builder okHttpClientBuilder = new OkHttpClient.Builder().connectTimeout(HttpCommon.OKHTTP_CLIENT_CONNECT_TIMEOUT, TimeUnit.SECONDS)
                     .writeTimeout(HttpCommon.OKHTTP_CLIENT_WRITE_TIMEOUT, TimeUnit.SECONDS)
@@ -81,7 +82,7 @@ public class RetrofitManager {
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
 
-            return new RetrofitManager(retrofit, interceptors);
+            return new HttpManager(retrofit, interceptors);
 
         }
 
