@@ -1,4 +1,4 @@
-package com.blink.framelibrary.network.interceptor;
+package com.blink.framelibrary.http.interceptor;
 
 import android.text.TextUtils;
 import android.util.Log;

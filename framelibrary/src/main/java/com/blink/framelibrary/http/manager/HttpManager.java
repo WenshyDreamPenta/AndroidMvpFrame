@@ -1,7 +1,7 @@
-package com.blink.framelibrary.network.manager;
+package com.blink.framelibrary.http.manager;
 
-import com.blink.framelibrary.network.subscriber.ApiSubscriber;
-import com.blink.framelibrary.network.subscriber.ApiSubscriberDecorator;
+import com.blink.framelibrary.http.subscriber.ApiSubscriber;
+import com.blink.framelibrary.http.subscriber.ApiSubscriberDecorator;
 
 import java.util.ArrayList;
 import java.util.List;

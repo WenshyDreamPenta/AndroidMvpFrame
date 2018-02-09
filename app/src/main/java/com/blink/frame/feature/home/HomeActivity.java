@@ -9,10 +9,10 @@ import android.widget.TextView;
 
 import com.blink.frame.R;
 import com.blink.framelibrary.base.activity.BaseMvpActivity;
-import com.blink.framelibrary.network.HttpApiRequest;
-import com.blink.framelibrary.network.api.testapi.TestApi;
-import com.blink.framelibrary.network.api.testapi.module.TestModule;
-import com.blink.framelibrary.network.subscriber.ApiSubscriber;
+import com.blink.framelibrary.http.HttpApiRequest;
+import com.blink.framelibrary.http.api.testapi.TestApi;
+import com.blink.framelibrary.http.api.testapi.module.TestModule;
+import com.blink.framelibrary.http.subscriber.ApiSubscriber;
 import com.blink.framelibrary.utils.animator.FrameAnimator;
 
 public class HomeActivity extends BaseMvpActivity<HomeContract.View, HomePresenter> implements HomeContract.View {

@@ -1,4 +1,4 @@
-package com.blink.framelibrary.network.base;
+package com.blink.framelibrary.http.base;
 
 import java.io.Serializable;
 

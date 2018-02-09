@@ -1,6 +1,6 @@
-package com.blink.framelibrary.network.api.testapi.module;
+package com.blink.framelibrary.http.api.testapi.module;
 
-import com.blink.framelibrary.network.base.BaseModule;
+import com.blink.framelibrary.http.base.BaseModule;
 
 import java.util.List;
 

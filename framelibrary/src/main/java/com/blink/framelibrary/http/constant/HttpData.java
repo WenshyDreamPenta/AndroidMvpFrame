@@ -1,4 +1,4 @@
-package com.blink.framelibrary.network.constant;
+package com.blink.framelibrary.http.constant;
 
 /**
  * <pre>
