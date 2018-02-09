@@ -7,6 +7,6 @@ package com.blink.frame.data;
  *     desc   : 数据获取基类
  * </pre>
  */
-public class DataManage {
+public class DataManager {
 
 }

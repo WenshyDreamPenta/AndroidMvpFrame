@@ -1,12 +1,10 @@
 package com.blink.framelibrary.http.manager;
 
 import com.blink.framelibrary.http.subscriber.ApiSubscriber;
-import com.blink.framelibrary.http.subscriber.ApiSubscriberDecorator;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import io.reactivex.Flowable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -28,7 +26,6 @@ public class HttpManager {
 
     private Retrofit mRetrofit;
 
-    private AtomicInteger requestCounter = new AtomicInteger(0);
     public HttpManager(Retrofit retrofit, List<Interceptor> interceptors) {
         mRetrofit = retrofit;
     }
@@ -39,13 +36,10 @@ public class HttpManager {
     }
 
     //请求
-    public <T> int request(Flowable<T> flowable, ApiSubscriber<T> subscriber) {
-        int requstId = requestCounter.addAndGet(1);
-        ApiSubscriberDecorator subscriberDecorator = new ApiSubscriberDecorator(requstId, subscriber);
+    public <T> void request(Flowable<T> flowable, ApiSubscriber<T> subscriber) {
         flowable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(subscriberDecorator);
-        return requstId;
+                .subscribe(subscriber);
     }
 
     public static class Builder {

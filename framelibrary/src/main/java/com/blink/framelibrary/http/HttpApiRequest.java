@@ -45,12 +45,13 @@ public class HttpApiRequest {
 
     //http request method
     public static <T> void request(@NonNull Flowable<T> observable, @NonNull ApiSubscriber<T> subscriber){
-        initHttpManager();
         mHttpManager.request(observable, subscriber);
     }
 
     //get api class
     public static  <T>  T getApi(@NonNull Class<T> t){
+        //init
+        initHttpManager();
         return  mHttpManager.getRetrofit().create(t);
     }
 }
