@@ -9,8 +9,10 @@ package com.blink.framelibrary.http;
  */
 public class HttpData {
 
+    public static final String APPID = "com.blink.frame";
     //Base url
     public static final String BASE_URL = "http://www.izaodao.com/Api/";
+    public static final String UPLOAD_FILE_URL = BASE_URL + "file/upload";
 
     //qcloud
     public static final String PLUGIN_QCLOUD = "plugin/qcloud";

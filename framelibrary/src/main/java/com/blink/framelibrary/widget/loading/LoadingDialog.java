@@ -31,7 +31,4 @@ public class LoadingDialog extends Dialog {
             super.dismiss();
         }
     }
-
-
-
 }

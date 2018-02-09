@@ -1,7 +1,5 @@
 package com.blink.framelibrary.http.manager;
 
-import com.blink.framelibrary.http.subscriber.ApiSubscriber;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -9,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 import io.reactivex.Flowable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
+import io.reactivex.subscribers.ResourceSubscriber;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -36,7 +35,7 @@ public class HttpManager {
     }
 
     //请求
-    public <T> void request(Flowable<T> flowable, ApiSubscriber<T> subscriber) {
+    public <T> void request(Flowable<T> flowable, ResourceSubscriber<T> subscriber) {
         flowable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);

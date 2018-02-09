@@ -1,11 +1,18 @@
 package com.blink.framelibrary.http;
 
+import com.blink.framelibrary.http.api.uploadapi.UploadFileApi;
 import com.blink.framelibrary.http.interceptor.HttpInterceptor;
 import com.blink.framelibrary.http.manager.HttpManager;
-import com.blink.framelibrary.http.subscriber.ApiSubscriber;
+import com.blink.framelibrary.http.requestbody.MultipartBuilder;
+import com.blink.framelibrary.http.requestbody.UploadFileRequestBody;
+import com.blink.framelibrary.http.subscriber.FileUploadSubscriber;
+
+import java.io.File;
 
 import io.reactivex.Flowable;
 import io.reactivex.annotations.NonNull;
+import io.reactivex.subscribers.ResourceSubscriber;
+import okhttp3.ResponseBody;
 
 /**
  * <pre>
@@ -42,9 +49,8 @@ public class HttpApiRequest {
             }
         }
     }
-
     //http request method
-    public static <T> void request(@NonNull Flowable<T> observable, @NonNull ApiSubscriber<T> subscriber){
+    public static <T> void request(@NonNull Flowable<T> observable, @NonNull ResourceSubscriber<T> subscriber){
         mHttpManager.request(observable, subscriber);
     }
 
@@ -53,5 +59,16 @@ public class HttpApiRequest {
         //init
         initHttpManager();
         return  mHttpManager.getRetrofit().create(t);
+    }
+
+    /**
+     * 单上传文件的封装.
+     * @param url 完整的接口地址
+     * @param file 需要上传的文件
+     * @param fileUploadSubscriber 上传回调
+     */
+    public static void upLoadFile(String url, File file, FileUploadSubscriber<ResponseBody> fileUploadSubscriber) {
+        UploadFileRequestBody uploadFileRequestBody = new UploadFileRequestBody(file, fileUploadSubscriber);
+        request(getApi(UploadFileApi.class).uploadFile(url, MultipartBuilder.fileToMultipartBody(file, uploadFileRequestBody)), fileUploadSubscriber);
     }
 }
