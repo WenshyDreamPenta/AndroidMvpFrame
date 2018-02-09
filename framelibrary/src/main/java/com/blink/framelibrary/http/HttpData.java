@@ -1,4 +1,4 @@
-package com.blink.framelibrary.http.constant;
+package com.blink.framelibrary.http;
 
 /**
  * <pre>
@@ -8,6 +8,10 @@ package com.blink.framelibrary.http.constant;
  * </pre>
  */
 public class HttpData {
+
+    //Base url
+    public static final String BASE_URL = "http://www.izaodao.com/Api/";
+
     //qcloud
     public static final String PLUGIN_QCLOUD = "plugin/qcloud";
     public static final String TEST_API = "AppFiftyToneGraph/videoLink";

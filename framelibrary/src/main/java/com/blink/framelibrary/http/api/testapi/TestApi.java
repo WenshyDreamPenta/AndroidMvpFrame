@@ -1,7 +1,7 @@
 package com.blink.framelibrary.http.api.testapi;
 
 import com.blink.framelibrary.http.api.testapi.module.TestModule;
-import com.blink.framelibrary.http.constant.HttpData;
+import com.blink.framelibrary.http.HttpData;
 
 import io.reactivex.Flowable;
 import retrofit2.http.POST;

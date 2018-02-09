@@ -1,6 +1,5 @@
 package com.blink.framelibrary.http;
 
-import com.blink.framelibrary.config.Config;
 import com.blink.framelibrary.http.interceptor.HttpInterceptor;
 import com.blink.framelibrary.http.manager.HttpManager;
 import com.blink.framelibrary.http.subscriber.ApiSubscriber;
@@ -25,7 +24,7 @@ public class HttpApiRequest {
     private static void initHttpManager(){
         synchronized (HttpManager.class){
             if (mHttpManager == null) {
-                mHttpManager = new HttpManager.Builder().setBaseUrl(Config.BASE_URL)
+                mHttpManager = new HttpManager.Builder().setBaseUrl(HttpData.BASE_URL)
                         .addInterceptor(new HttpInterceptor())
                         .build();
             }
