@@ -20,6 +20,7 @@ import com.blink.framelibrary.utils.CommonUtil;
  * </pre>
  */
 public abstract class BaseFragment extends Fragment implements BaseInterface.BaseView, BaseInterface.BaseUtilView{
+    private static final String FRAGMENT_EXTRA = "FRAGMENT_EXTRA";
     protected View contentView;
     protected BaseActivity mActivity;
     private static final String STATE_SAVE_IS_HIDDEN = "STATE_SAVE_IS_HIDDEN";
