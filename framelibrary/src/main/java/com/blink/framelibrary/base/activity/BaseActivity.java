@@ -1,5 +1,7 @@
 package com.blink.framelibrary.base.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
@@ -23,6 +25,7 @@ import com.blink.framelibrary.widget.loading.LoadingDialog;
  */
 public abstract class BaseActivity extends AppCompatActivity implements BaseInterface.BaseView, BaseInterface.BaseUtilView {
 
+    private static final String ACTIVITY_EXTRA = "ACTIVITY_EXTRA";
     protected View contentView;
     protected LoadingDialog mLoadingDialog;
 
@@ -75,5 +78,11 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseInte
     protected void onDestroy() {
         super.onDestroy();
         ActivityManageUtil.getManager().removeActivity(this);
+    }
+
+    public static void start(Context context, Bundle bundle) {
+        Intent starter = new Intent(context, BaseActivity.class);
+        starter.putExtra(ACTIVITY_EXTRA, bundle);
+        context.startActivity(starter);
     }
 }
