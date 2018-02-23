@@ -1,3 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="refresh_anim">
+        <item>@drawable/ic_eaglelive_loading_01</item>
+        <item>@drawable/ic_eaglelive_loading_02</item>
+        <item>@drawable/ic_eaglelive_loading_03</item>
+        <item>@drawable/ic_eaglelive_loading_04</item>
+        <item>@drawable/ic_eaglelive_loading_05</item>
+        <item>@drawable/ic_eaglelive_loading_06</item>
+        <item>@drawable/ic_eaglelive_loading_08</item>
+    </string-array>
 </resources>

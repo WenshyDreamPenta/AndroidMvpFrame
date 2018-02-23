@@ -16,6 +16,8 @@ import android.view.animation.Transformation;
 import android.widget.AbsListView;
 import android.widget.ImageView;
 
+import com.blink.framelibrary.R;
+
 /**
  * <pre>
  *     author : wangmingxing
@@ -77,7 +79,8 @@ public class PullRefreshLayout extends ViewGroup {
         mSpinnerFinalOffset = mTotalDragDistance = dp2px(DRAG_MAX_DISTANCE);
 
         mRefreshView = new ImageView(context);
-        setRefreshDrawable(new RefreshAnimationDrawable(this));
+        //默认动画
+        setRefreshDrawable(new RefreshAnimationDrawable(this, R.array.refresh_anim));
         mRefreshView.setVisibility(GONE);
         addView(mRefreshView, 0);
 
@@ -90,6 +93,7 @@ public class PullRefreshLayout extends ViewGroup {
         super(context, attrs, defStyleAttr);
     }
 
+    //设置刷新动画
     public void setRefreshDrawable(RefreshDrawable drawable)
     {
         setRefreshing(false);
