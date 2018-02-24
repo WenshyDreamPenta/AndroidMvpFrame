@@ -11,17 +11,17 @@ import java.util.Stack;
  *     desc   : 全局Activity管理类
  * </pre>
  */
-public class ActivityManageUtil {
+public class ActivityUtil {
     private static Stack<Activity> activityStack;
 
-    private static ActivityManageUtil instance;
+    private static ActivityUtil instance;
 
-    private ActivityManageUtil() {}
+    private ActivityUtil() {}
 
     //单例
-    public static ActivityManageUtil getManager() {
+    public static ActivityUtil getManager() {
         if (instance == null) {
-            instance = new ActivityManageUtil();
+            instance = new ActivityUtil();
         }
         return instance;
     }

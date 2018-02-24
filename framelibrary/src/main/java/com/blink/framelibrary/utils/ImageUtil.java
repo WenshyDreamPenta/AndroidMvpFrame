@@ -1,4 +1,4 @@
-package com.blink.framelibrary.utils.image;
+package com.blink.framelibrary.utils;
 
 import android.content.Context;
 import android.graphics.Bitmap;

@@ -12,7 +12,7 @@ import android.view.View;
 import com.r0adkll.slidr.Slidr;
 import com.blink.framelibrary.R;
 import com.blink.framelibrary.base.BaseInterface;
-import com.blink.framelibrary.utils.ActivityManageUtil;
+import com.blink.framelibrary.utils.ActivityUtil;
 import com.blink.framelibrary.utils.CommonUtil;
 import com.blink.framelibrary.widget.loading.LoadingDialog;
 
@@ -39,7 +39,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseInte
         initViews();
         initEvents();
         init();
-        ActivityManageUtil.getManager().addActivity(this);
+        ActivityUtil.getManager().addActivity(this);
     }
 
     protected void setBaseView(@LayoutRes int layoutId) {
@@ -77,7 +77,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseInte
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        ActivityManageUtil.getManager().removeActivity(this);
+        ActivityUtil.getManager().removeActivity(this);
     }
 
     public static void start(Context context, Bundle bundle) {

@@ -1,16 +1,13 @@
 package com.blink.framelibrary.utils.animator;
 
-import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LifecycleObserver;
-import android.arch.lifecycle.OnLifecycleEvent;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.os.Handler;
-import android.util.Log;
 import android.widget.ImageView;
 
-import com.blink.framelibrary.utils.image.ImageUtil;
+import com.blink.framelibrary.utils.ImageUtil;
 
 import java.lang.ref.SoftReference;
 import java.util.ArrayList;

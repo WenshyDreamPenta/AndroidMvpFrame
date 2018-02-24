@@ -8,7 +8,7 @@ import android.graphics.RectF;
 import android.os.Handler;
 
 import com.blink.framelibrary.utils.CommonUtil;
-import com.blink.framelibrary.utils.image.ImageUtil;
+import com.blink.framelibrary.utils.ImageUtil;
 
 /**
  * <pre>
