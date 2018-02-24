@@ -2,6 +2,8 @@ package com.blink.framelibrary.base.application;
 
 import android.support.multidex.MultiDexApplication;
 
+import com.blink.framelibrary.utils.AppInitUtils;
+
 /**
  * <pre>
  *     author : wangmingxing
@@ -13,5 +15,6 @@ public class BaseAplication extends MultiDexApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+        AppInitUtils.init(getBaseContext());
     }
 }
