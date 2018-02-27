@@ -61,7 +61,7 @@ public class HomeActivity extends BaseMvpActivity<HomeContract.View, HomePresent
         // getToolBar().setTitle("main activity");
         mPresenter.initDatas();
         Intent intent = new Intent();
-        intent.setAction("com.blink.MyService");
+        intent.setAction("com.blink.frame.services.MyAidlService");
         intent.setPackage("com.blink.frame");
         bindService(intent, serviceConnection, BIND_AUTO_CREATE);
     }
