@@ -14,7 +14,13 @@ import com.blink.framelibrary.http.api.testapi.TestApi;
 import com.blink.framelibrary.http.api.testapi.module.TestModule;
 import com.blink.framelibrary.http.subscriber.ApiSubscriber;
 import com.blink.framelibrary.utils.animator.FrameAnimator;
-
+/**
+ * <pre>
+ *     author : wangmingxing
+ *     time   : 2018/1/28
+ *     desc   :
+ * </pre>
+ */
 public class HomeActivity extends BaseMvpActivity<HomeContract.View, HomePresenter> implements HomeContract.View {
     private ImageView imageView;
     private RelativeLayout rlRoot;
