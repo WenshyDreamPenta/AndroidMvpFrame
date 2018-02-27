@@ -1,12 +1,18 @@
 package com.blink.frame.feature.home;
 
+import android.content.ComponentName;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
+import android.os.RemoteException;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.blink.frame.IMyAidlInterface;
 import com.blink.frame.R;
 import com.blink.framelibrary.base.activity.BaseMvpActivity;
 import com.blink.framelibrary.http.HttpApiRequest;
@@ -26,6 +32,24 @@ public class HomeActivity extends BaseMvpActivity<HomeContract.View, HomePresent
     private RelativeLayout rlRoot;
     private TextView tvApi;
     private TextView tvAnim;
+    private IMyAidlInterface mIRemoteService;
+    private ServiceConnection serviceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            mIRemoteService = IMyAidlInterface.Stub.asInterface(service);
+            try {
+                mIRemoteService.add(2,3);
+            }
+            catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            mIRemoteService = null;
+        }
+    };
 
     @Override
     public int getLayoutId() {
@@ -33,9 +57,13 @@ public class HomeActivity extends BaseMvpActivity<HomeContract.View, HomePresent
     }
 
     @Override
-    public void init() {
+    public void init(){
         // getToolBar().setTitle("main activity");
         mPresenter.initDatas();
+        Intent intent = new Intent();
+        intent.setAction("com.blink.MyService");
+        intent.setPackage("com.blink.frame");
+        bindService(intent, serviceConnection, BIND_AUTO_CREATE);
     }
 
     @Override

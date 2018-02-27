@@ -22,10 +22,15 @@
         </activity>
 
         <service
-            android:name=".services.MyAidlService"
+            android:name="com.blink.frame.services.MyAidlService"
             android:enabled="true"
             android:exported="true"
-            android:process=":aidl" />
+            android:process=":aidl" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="com.blink.MyService" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

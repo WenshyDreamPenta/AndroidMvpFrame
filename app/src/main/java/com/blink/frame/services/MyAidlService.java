@@ -3,7 +3,9 @@ package com.blink.frame.services;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
+import android.os.Process;
 import android.os.RemoteException;
+import android.util.Log;
 
 import com.blink.frame.IMyAidlInterface;
 /**
@@ -14,8 +16,20 @@ import com.blink.frame.IMyAidlInterface;
  * </pre>
  */
 public class MyAidlService extends Service {
-    public MyAidlService() {
-    }
+
+    private final IMyAidlInterface.Stub mBinder = new IMyAidlInterface.Stub() {
+        @Override
+        public int add(int a, int b) throws RemoteException {
+            Log.d("MyAidlService", "add: " + (a + b));
+            return a + b;
+        }
+
+        public int getPid(){
+            return Process.myPid();
+        }
+    };
+
+    public MyAidlService() {}
 
     @Override
     public void onCreate() {
@@ -27,10 +41,7 @@ public class MyAidlService extends Service {
        return mBinder;
     }
 
-    private final IMyAidlInterface.Stub mBinder = new IMyAidlInterface.Stub() {
-        @Override
-        public int add(int a, int b) throws RemoteException {
-            return a + b;
-        }
-    };
+
+
+
 }
