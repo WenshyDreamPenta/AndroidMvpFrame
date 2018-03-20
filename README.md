@@ -12,3 +12,11 @@
  提供MVP基类封装，使用者直接继承即可使用。
 
 
+
+## 使用
+
+Module gradle文件加入如下引用：
+
+```
+implementation 'com.blink:framelibrary:1.0.x'
+```
