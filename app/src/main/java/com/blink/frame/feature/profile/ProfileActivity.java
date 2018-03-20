@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.blink.framelibrary.base.activity.BaseBarActivity;
+import com.blink.framelibrary.eventbus.EventMap;
 
 /**
  * <pre>
@@ -51,5 +52,10 @@ public class ProfileActivity extends BaseBarActivity {
     @Override
     protected boolean isShouldHasBar() {
         return false;
+    }
+
+    @Override
+    protected void handleEvent(EventMap.BaseEvent event) {
+
     }
 }

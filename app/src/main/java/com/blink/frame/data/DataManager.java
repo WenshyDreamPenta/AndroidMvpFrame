@@ -1,5 +1,6 @@
 package com.blink.frame.data;
 
+
 /**
  * <pre>
  *     author : wangmingxing

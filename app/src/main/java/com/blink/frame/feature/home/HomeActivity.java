@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.blink.frame.IMyAidlInterface;
 import com.blink.frame.R;
 import com.blink.framelibrary.base.activity.BaseMvpActivity;
+import com.blink.framelibrary.eventbus.EventMap;
 import com.blink.framelibrary.http.HttpApiRequest;
 import com.blink.framelibrary.http.api.testapi.TestApi;
 import com.blink.framelibrary.http.api.testapi.module.TestModule;
@@ -64,6 +65,7 @@ public class HomeActivity extends BaseMvpActivity<HomeContract.View, HomePresent
         intent.setAction("com.blink.frame.services.MyAidlService");
         intent.setPackage("com.blink.frame");
         bindService(intent, serviceConnection, BIND_AUTO_CREATE);
+
     }
 
     @Override
@@ -126,4 +128,10 @@ public class HomeActivity extends BaseMvpActivity<HomeContract.View, HomePresent
     protected boolean isEventActivity() {
         return false;
     }
+
+    @Override
+    protected void handleEvent(EventMap.BaseEvent baseEvent) {
+
+    }
 }
+
