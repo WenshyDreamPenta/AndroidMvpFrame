@@ -31,9 +31,7 @@ public abstract class BaseEventActivity extends BaseActivity {
      */
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(EventMap.BaseEvent event){
-            if(event instanceof EventMap.HExceptionEvent){
-
-            }
+        handleEvent(event);
     }
 
     @Override
@@ -44,5 +42,6 @@ public abstract class BaseEventActivity extends BaseActivity {
         }
     }
 
+    protected abstract void handleEvent(EventMap.BaseEvent event);
     protected abstract boolean isEventActivity();
 }
