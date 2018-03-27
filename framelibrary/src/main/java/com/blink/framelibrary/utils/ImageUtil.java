@@ -60,7 +60,7 @@ public class ImageUtil {
 	 * @param resId 资源id
 	 * @return 软引用的bitmap
 	 */
-	public static  Bitmap getSoftRefrenceBitmap(Context context, int resId) {
+	public static Bitmap getSoftRefrenceBitmap(Context context, int resId) {
     	Bitmap bitmap = getBmpDrawable(context, resId).getBitmap();
 	    SoftReference<Bitmap> sBitmapReference = new SoftReference<Bitmap>(bitmap);//使用bitmap软引用
 	    bitmap = null;//释放强引用

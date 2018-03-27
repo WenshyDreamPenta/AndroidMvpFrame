@@ -5,11 +5,13 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.os.Handler;
+import android.os.Looper;
 import android.widget.ImageView;
 
 import com.blink.framelibrary.utils.ImageUtil;
 
 import java.lang.ref.SoftReference;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 /**
@@ -24,7 +26,7 @@ import java.util.ArrayList;
 public class FrameAnimator implements LifecycleObserver{
 
     private int FPS;  // 每秒播放帧数，fps = 1/t，t-动画两帧时间间隔
-    private Context mContext;
+    private WeakReference<Context> mWeakReferenceContext;
     // 单例
     private static FrameAnimator mInstance;
 
@@ -39,7 +41,7 @@ public class FrameAnimator implements LifecycleObserver{
     }
 
     public FrameAnimator setParameters(Context context, int resId, int fps){
-        mInstance.mContext = context;
+        mInstance.mWeakReferenceContext = new WeakReference<>(context);
         mInstance.FPS = fps;
         mInstance.mProgressAnimFrames = mInstance.getData(resId);
         return mInstance;
@@ -47,14 +49,13 @@ public class FrameAnimator implements LifecycleObserver{
     }
 
     public FramesSequenceAnimation createFramesAnim(ImageView imageView) {
-        return new FramesSequenceAnimation(imageView, mProgressAnimFrames, FPS);
+        return new FramesSequenceAnimation(imageView, mProgressAnimFrames, FPS, mWeakReferenceContext.get());
     }
-
 
     /**
      * 内部类-帧动画播放类
      */
-    public class FramesSequenceAnimation {
+    public static class FramesSequenceAnimation {
         private int[] mFrames; // 帧数组
         private int mIndex; // 当前帧
         private boolean mShouldRun; // 开始/停止播放用
@@ -65,25 +66,24 @@ public class FrameAnimator implements LifecycleObserver{
         private OnAnimationStoppedListener mOnAnimationStoppedListener; //播放停止监听
         private ArrayList<Bitmap> bmpList = new ArrayList<>();
         private boolean isRecycle = false;
+        private Context mContext;
 
-
-        FramesSequenceAnimation(ImageView imageView, int[] frames, int fps) {
+        FramesSequenceAnimation(ImageView imageView, int[] frames, int fps, Context context) {
             //参数初始化
-            mHandler = new Handler();
+            mHandler = new Handler(Looper.getMainLooper());
             mFrames = frames;
             mIndex = -1;
             mSoftReferenceImageView = new SoftReference<ImageView>(imageView);
             mShouldRun = false;
             mIsRunning = false;
             mDelayMillis = 1000 / fps;//帧动画时间间隔，毫秒
-
+            mContext = context;
             //设置第一帧
             Bitmap bitmap = ImageUtil.getSoftRefrenceBitmap(mContext, mFrames[0]);
             if (bitmap != null) {
                 imageView.setImageBitmap(bitmap);
                 bmpList.add(bitmap);
             }
-
         }
 
         //设置是否循环
@@ -194,7 +194,7 @@ public class FrameAnimator implements LifecycleObserver{
      */
     private int[] getData(int resId) {
 
-        TypedArray array = mContext.getResources().obtainTypedArray(resId);
+        TypedArray array = mWeakReferenceContext.get().getResources().obtainTypedArray(resId);
         int len = array.length();
         int[] intArray = new int[array.length()];
         for (int i = 0; i < len; i++) {
@@ -202,7 +202,6 @@ public class FrameAnimator implements LifecycleObserver{
         }
         array.recycle();
         return intArray;
-
     }
 
     public interface OnAnimationStoppedListener {
@@ -210,7 +209,6 @@ public class FrameAnimator implements LifecycleObserver{
     }
 
     public void releaseAnimator() {
-        mInstance.mContext = null;
         mInstance = null;
     }
 }
